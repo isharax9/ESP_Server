@@ -1,3 +1,5 @@
+#include <Arduino_JSON.h>
+
 #include <WiFi.h>
 #include <HTTPClient.h>
 
@@ -29,7 +31,10 @@ void loop() {
   if (status > 0) {
     if (status == HTTP_CODE_OK) {
       String responseText = request.getString();
-      Serial.println(responseText);
+
+      JSONVar json = JSON.parse(responseText);
+      Serial.println(json["x"]);
+      Serial.println(json["y"]);
     }
 
   } else {
