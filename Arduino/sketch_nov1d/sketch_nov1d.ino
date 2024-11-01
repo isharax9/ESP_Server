@@ -22,8 +22,9 @@ void setup() {
 void loop() {
 
   HTTPClient request = HTTPClient();
-  request.begin("https://f284-178-128-59-4.ngrok-free.app/ESP_Server/Test?name=Ishara");
-  int status = request.GET();
+  request.begin("https://brief-awake-whippet.ngrok-free.app/ESP_Server/Test");
+  request.addHeader("Content-Type", "application/x-www-form-urlencoded");
+  int status = request.POST("name=Ishara Post requests are working fine");
 
   if (status > 0) {
     if (status == HTTP_CODE_OK) {
